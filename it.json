@@ -1,0 +1,34 @@
+{
+    "config": {
+      "url": "yourgraphqlurl",
+      "name": "Testing appSync",
+      "selectedQueries": ["createEvent", "getEvent", "deleteEvent", "commentOnEvent"],
+      "queryFile": true,
+      "withMutations": true,
+      "duration": 5,
+      "arrivalRate": 10,
+      "withOutput": true,
+      "headers": {
+        "x-api-key": "yourapikeyorheader"
+      }
+    },
+    "args": {
+      "getEvent": {
+        "id": "5addc7a5-1af4-42dd-a366-0bb8d7ab9b5d"
+      },
+      "createEvent": {
+            "description": "this is an event",
+            "name": "Staff Meeting",
+            "when": "today",
+            "where": "here"
+      },
+      "commentOnEvent": {
+        "content": "this is a comment",
+        "eventId": "b02de90b-100d-4006-a633-4caa8f927647",
+        "createdAt": "today"
+  },
+      "deleteEvent": {
+        "id": "5addc7a5-1af4-42dd-a366-0bb8d7ab9b5d"
+      }
+    }
+  }
