@@ -8,5 +8,10 @@ it.json file with the configuration, queries and mutations (read the doc for tha
 add your schema to the project folder
 
 Execute 
-npx easygraphql-lt it.json --localSchema
+npm run testEvents
+or
+npm run testLiza
 
+or 
+npx easygraphql-lt events.json --localSchema
+npx easygraphql-lt liza.json --localSchema
