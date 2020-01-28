@@ -1,0 +1,269 @@
+type PaginaPrograma {
+    infoPagina: InfoPaginado!,
+    itemsPagina: [Programa]
+}
+
+type Programa {
+    idPrograma:Int!,
+    monedaBase: String
+    tasaConversion: Float,
+    fechaInicio: Date,
+    fechaBaja: Date,
+    tipo: String,
+    nombre: String,
+    nombreFantasia: String,
+    cuit: String,
+    razonSocial: String
+    paises: [Pais]
+    rubros: [Rubro],
+    subrubros: [Subrubro],
+    zonas: [Zona],
+    localidades: [Localidad],
+    url: String!,
+    segmentos: [Segmento],
+    usuarios: [Usuario],
+    definicionPerfil: [DefinicionPerfil],
+    esPublico: Boolean,
+    estado: Estado,
+    settings: Settings,
+    template: Template
+    emailContacto: String
+    emailRemitente: String
+    telefonoContacto: String
+    condiciones: String,
+    privacidad: String,
+    preguntas: String,
+    nivelSeguridad: NivelSeguridad,
+    ordenDefaultCatalogo: OrdenDefaultCatalogo,
+    diasParaVencimientoPuntos: Int,
+    diasParaNotificacionVencimientoPuntos: Int,
+    maximoMovimientoPuntos: Int,
+    maximoMovimientoPlata: Float,
+    cuentaCorriente: CuentaCorriente,
+    segmentoDefault: Segmento
+    idiomas: [IdiomaConEtiqueta]
+    comentarios: String
+    usuarioCreador: Usuario
+    usuarioModificador: Usuario
+    fechaUltimaModificacion: Date
+    modulos: [ModuloPrograma]
+    indicadores: [IndicadorPrograma]
+    htmlExpectativa: String,
+    urlContenidos: String
+    catalogoPublico: Boolean
+    fechaLanzamiento: Date
+}
+
+type ProgramaPublicInfo {
+    esPublico: Boolean,
+    idPrograma: Int,
+    nombre: String,
+    definicionPerfil: [DefinicionPerfil],
+    settings: Settings,
+    template: Template
+    segmentoDefault: Segmento
+    idiomas: [IdiomaConEtiqueta]
+    condiciones: String
+    preguntas: String
+    privacidad: String
+    modulos: [ModuloPrograma]
+    htmlExpectativa: String
+    catalogoPublico: Boolean
+}
+
+input PaisInput {
+    idPais: Int!,
+    descripcion: String,
+    estado: Estado
+}
+
+enum NivelSeguridad {
+    BAJO,
+    MEDIO,
+    ALTO
+}
+enum OrdenDefaultCatalogo {
+    ALFABETICAMENTE,
+    PUNTOS_ASC,
+    PUNTOS_DESC
+}
+
+input ProgramaCreate {
+    url:String!,
+    tipo: String,              #NO OBLIGATORIO
+    nombre: String!,
+    nombreFantasia: String,    #NO OBLIGATORIO
+    cuit: String,              #NO OBLIGOTORIO
+    razonSocial: String        #NO OBLIGATORIO
+    monedaBase: String!
+    tasaConversion: Float!,
+    paises: [PaisInput!]!
+    settings: SettingsCreate    #OBLIGATORIO
+    template: String            #NO OBLIGATORIO
+    esPublico: Boolean!
+    emailContacto: String
+    emailRemitente: String
+    telefonoContacto: String
+    condiciones: String,
+    privacidad: String,
+    preguntas: String,
+    nivelSeguridad: NivelSeguridad,
+    ordenDefaultCatalogo: OrdenDefaultCatalogo
+    diasParaVencimientoPuntos: Int,
+    diasParaNotificacionVencimientoPuntos: Int,
+    maximoMovimientoPuntos: Int!,
+    maximoMovimientoPlata: Float!
+    comentarios: String
+    idIdiomaDefault: ID
+    htmlExpectativa: String
+    modulos: [ModuloProgramaInput]
+    indicadores: [IndicadorProgramaInput]
+    urlContenidos: String
+    catalogoPublico: Boolean
+    fechaLanzamiento: Date
+}
+
+input ProgramaUpdate {
+    idPrograma: Int!,
+    paises: [PaisInput!]
+    monedaBase: String
+    tasaConversion: Float,
+    url: String,
+    tipo: String,
+    nombre: String,
+    nombreFantasia: String,
+    cuit: String,
+    razonSocial: String
+    definicionPerfil: [String],
+    estado: Estado,
+    settings: SettingsUpdate
+    template: TemplateUpdate
+    esPublico: Boolean,
+    fechaInicio: Date
+    fechaBaja: Date
+    emailContacto: String
+    emailRemitente: String
+    telefonoContacto: String
+    condiciones: String,
+    privacidad: String,
+    preguntas: String,
+    nivelSeguridad: NivelSeguridad,
+    ordenDefaultCatalogo: OrdenDefaultCatalogo
+    diasParaVencimientoPuntos: Int,
+    diasParaNotificacionVencimientoPuntos: Int,
+    maximoMovimientoPuntos: Int,
+    maximoMovimientoPlata: Float
+    comentarios: String
+    modulos: [ModuloProgramaInput]
+    indicadores: [IndicadorProgramaInput]
+    htmlExpectativa: String
+    urlContenidos: String
+    catalogoPublico: Boolean
+    fechaLanzamiento: Date
+}
+
+input ProgramaLegalesUpdate {
+    idPrograma: Int!,
+    condiciones: String,
+    privacidad: String,
+    preguntas: String,
+}
+
+
+input ProgramaSearch {
+    idPrograma: Int,
+    idsProgramas: [Int],
+    monedaBase: String
+    tasaConversion: Float,
+    url: String,
+    tipo: String,
+    nombre: String,
+    nombreFantasia: String,
+    cuit: String,
+    razonSocial: String
+    estado: Estado,
+    emailContacto: String
+    emailRemitente: String
+    telefonoContacto: String
+    condiciones: String,
+    privacidad: String,
+    preguntas: String,
+    nivelSeguridad: NivelSeguridad,
+    ordenDefaultCatalogo: OrdenDefaultCatalogo
+    diasParaVencimientoPuntos: Int,
+    diasParaNotificacionVencimientoPuntos: Int,
+    maximoMovimientoPuntos: Int,
+    maximoMovimientoPlata: Float
+    comentarios: String
+    fechaInicio: Date,
+    fechaBaja: Date,
+}
+
+input ProgramaRange {
+    fechaInicio: RangeDate,
+    fechaBaja: RangeDate,
+
+    diasParaVencimientoPuntos: RangeInt,
+    diasParaNotificacionVencimientoPuntos: RangeInt,
+    maximoMovimientoPuntos: RangeInt,
+    maximoMovimientoPlata: RangeFloat
+}
+
+input ProgramaOrder {
+    column: ProgramaColumn!,
+    order: Order
+}
+enum ProgramaColumn {
+    idPrograma,
+    monedaBase
+    tasaConversion,
+    url,
+    tipo,
+    nombre,
+    nombreFantasia,
+    cuit,
+    razonSocial
+    estado,
+    esPublico,
+    fechaInicio,
+    fechaBaja
+    emailContacto
+    emailRemitente
+    telefonoContacto
+    condiciones
+    privacidad
+    preguntas
+    nivelSeguridad
+    ordenDefaultCatalogo
+    diasParaVencimientoPuntos,
+    diasParaNotificacionVencimientoPuntos,
+    maximoMovimientoPuntos,
+    maximoMovimientoPlata
+    comentarios
+    htmlExpectativa
+    catalogoPublico
+}
+
+
+type IndicadorPrograma {
+    kpi: String,
+    estado: Estado
+}
+input IndicadorProgramaInput {
+    kpi: String,
+    estado: Estado
+}
+
+
+extend type Query {
+    getProgramas(programaLike: ProgramaSearch, pagina: Pagina, programaOrder:ProgramaOrder, programaRange: ProgramaRange): PaginaPrograma
+    getPrograma(url: String!) : Programa,
+    getProgramaPublicInfo(url: String!): ProgramaPublicInfo
+}
+
+extend type Mutation {
+    createPrograma(programa: ProgramaCreate!): Programa,
+    updatePrograma(programa: ProgramaUpdate!): Programa,
+    updateProgramaLegales(programa: ProgramaLegalesUpdate!): Programa,
+    removePrograma(idPrograma: Int!): Programa,
+}

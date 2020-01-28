@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "testEvents": " npx easygraphql-lt events.json --localSchema",
+    "testLiza": " npx easygraphql-lt liza.json --localSchema"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "easygraphql-load-tester": "^0.3.8"
+  }
 }

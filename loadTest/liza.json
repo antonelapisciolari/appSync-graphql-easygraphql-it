@@ -1,0 +1,54 @@
+{
+    "config": {
+      "url": "https://api.demo01.dev.liza.ashiwea.com:4500/graphql",
+      "name": "Load Testing Liza",
+      "selectedQueries": ["getPrograma","createPrograma", "updatePrograma","removePrograma"],
+      "queryFile": true,
+      "withMutations": true,
+      "duration": 5,
+      "arrivalRate": 10,
+      "withOutput": true
+    },
+    "args": {
+    "getPrograma" : {
+        "url": "demo10.dev.liza.ashiwea.com"
+    },
+    "createPrograma": {
+      "programa":
+      {
+        "tipo": "CLIENTE",
+        "nombre": "John Snow",
+        "cuit": "273290543212",
+        "tasaConversion":0.2,
+        "url": "b02de90b-100d-4006-a633-4caa8f927647",
+        "esPublico": true,
+        "maximoMovimientoPuntos": 1,
+        "maximoMovimientoPlata":1,
+        "monedaBase": "ARS",
+         "paises": {
+            "idPais":4
+          },
+          "modulos": {
+            "nombreGrupo": "Movimientos",
+            "estado": "ACTIVO"
+          }
+      }
+    },
+    "updatePrograma": {
+      "programa":
+      {
+        "idPrograma": 2,
+        "url": "b02de90b-100d-4006-a633-4caa8f927647",
+        "tipo": "today",
+        "nombre": "today",
+         "paises": {
+            "idPais":4
+          }
+      }
+    },
+    "removePrograma": {
+      "idPrograma":1
+    }
+
+  }
+}
