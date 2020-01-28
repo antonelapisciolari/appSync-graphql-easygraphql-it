@@ -1,6 +1,6 @@
 {
     "config": {
-      "url": "https://2i7ki2kvgjadnedqadk2cb5tla.appsync-api.us-east-1.amazonaws.com/graphql",
+      "url": "",
       "name": "Testing appSync",
       "selectedQueries": ["createEvent", "getEvent", "deleteEvent", "commentOnEvent"],
       "queryFile": true,
@@ -9,7 +9,7 @@
       "arrivalRate": 10,
       "withOutput": true,
       "headers": {
-        "x-api-key": "da2-74u4h4vnnnb5nikinwhfighy24"
+        "x-api-key": ""
       }
     },
     "args": {
